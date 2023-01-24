@@ -13,3 +13,13 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+# Common IDE folders
+.idea/
+.vscode/
+_vendor*
+bin/*
+pkg/*
+src/github.com/*
+.DS_Store
+.vscode/launch.json
