@@ -2,6 +2,7 @@ package app
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/rafawilliner/sama-api/src/api/config/database"
 	"github.com/rafawilliner/sama-api/src/api/infrastructure/dependencies"
 )
 
@@ -11,6 +12,7 @@ const (
 
 func Start() {
 
+	dependencies := dependencies.StartConnection{StoreConnection: new(database.GormConnection)}
 	handlers := dependencies.Start()
 	router := gin.Default()
 	group := router.Group("/sama")

@@ -6,17 +6,17 @@ import (
 )
 
 type PetRequest struct {
-	Id     string           `json:"id"`
-	Name   string           `json:"description"`
-	Gender string           `json:"family"`
-	Race   string           `json:"race"`
-	Age    int32            `json:"age"`
+	Id     int64            `json:"id"`
+	Name   string           `json:"name" binding:"required,max=255"`
+	Gender *string          `json:"family"`
+	Race   *string          `json:"race"`
+	Age    *int32           `json:"age"`
 	Specie constants.Specie `json:"specie"`
-	Weight int32            `json:"weight"`
+	Weight *int32           `json:"weight"`
 }
 
 func (request *PetRequest) ValidateRequest() error {
-	if request.Age <= 0 {
+	if request.Age != nil && *request.Age <= 0 {
 		err := errors.NewValidationError("Age must be greater than 0")
 		return err
 	}

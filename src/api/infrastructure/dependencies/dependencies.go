@@ -1,6 +1,7 @@
 package dependencies
 
 import (
+	"github.com/rafawilliner/sama-api/src/api/config/database"
 	"github.com/rafawilliner/sama-api/src/api/core/usecases/create"
 	"github.com/rafawilliner/sama-api/src/api/entrypoints"
 	createHandler "github.com/rafawilliner/sama-api/src/api/entrypoints/handlers/create"
@@ -11,11 +12,21 @@ type HandlerContainer struct {
 	PetCreate entrypoints.Handler
 }
 
-func Start() *HandlerContainer {
+type StartConnection struct {
+	StoreConnection database.Connection
+}
+
+func (connections StartConnection) Start() *HandlerContainer {
+
+	// Database
+	storeClient, err := connections.StoreConnection.Connect()
+	if err != nil {
+		panic(err.Error())
+	}
 
 	// Providers
 	petProvider := petRepo.Repository{
-		//TODO connection
+		StoreClient: storeClient,
 	}
 
 	// UseCases

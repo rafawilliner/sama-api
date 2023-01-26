@@ -8,11 +8,11 @@ import (
 type PetResponse struct {
 	Id     int64            `json:"id"`
 	Name   string           `json:"description"`
-	Gender string           `json:"family"`
-	Race   string           `json:"race"`
-	Age    int32            `json:"age"`
+	Gender *string          `json:"family"`
+	Race   *string          `json:"race"`
+	Age    *int32           `json:"age"`
 	Specie constants.Specie `json:"specie"`
-	Weight int32            `json:"weight"`
+	Weight *int32           `json:"weight"`
 }
 
 func NewResponse(pet *entities.Pet) PetResponse {
