@@ -26,8 +26,8 @@ func GetConnectionDataBase() *ConnectionData {
 	connectionData := ConnectionData{}
 	connectionData.Host = "127.0.0.1"    //os.Getenv("DB_TEST_HOST")
 	connectionData.Schema = "sama"       //os.Getenv("DB_TEST_SCHEMA")
-	connectionData.Username = "root"     //os.Getenv("DB_TEST_USER")
-	connectionData.Password = "mamincho" //os.Getenv("DB_TEST_PASS")
+	connectionData.Username = ""     //os.Getenv("DB_TEST_USER")
+	connectionData.Password = "" //os.Getenv("DB_TEST_PASS")
 	connectionData.Dialect = mysqlDialect
 	connectionData.DialectConnect = mySQLConnect
 	return &connectionData
