@@ -2,8 +2,8 @@ package app
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/rafawilliner/sama-api/src/api/config/database"
 	"github.com/rafawilliner/sama-api/src/api/infrastructure/dependencies"
+	"github.com/rafawilliner/sama-api/src/api/config/database"
 )
 
 const (

@@ -23,3 +23,5 @@ pkg/*
 src/github.com/*
 .DS_Store
 .vscode/launch.json
+./src/api/.env
+.env

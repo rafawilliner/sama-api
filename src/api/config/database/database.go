@@ -2,6 +2,7 @@ package database
 
 import (
 	"fmt"
+	"os"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -24,24 +25,14 @@ type ConnectionData struct {
 func GetConnectionDataBase() *ConnectionData {
 
 	connectionData := ConnectionData{}
-	connectionData.Host = "127.0.0.1"    //os.Getenv("DB_TEST_HOST")
-	connectionData.Schema = "sama"       //os.Getenv("DB_TEST_SCHEMA")
-	connectionData.Username = ""     //os.Getenv("DB_TEST_USER")
-	connectionData.Password = "" //os.Getenv("DB_TEST_PASS")
+	connectionData.Host = os.Getenv("DB_HOST")
+	connectionData.Schema = os.Getenv("DB_SCHEMA")
+	connectionData.Username = os.Getenv("DB_USER")
+	connectionData.Password = os.Getenv("DB_PASS")
 	connectionData.Dialect = mysqlDialect
 	connectionData.DialectConnect = mySQLConnect
 	return &connectionData
 }
-
-/*func (cd *ConnectionData) setupMasterConnectionData() *ConnectionData {
-	cd.Host = "DB_MYSQL_CREDITSCREDIT00_CREDPRODS_CREDPRODS_ENDPOINT"
-	cd.Password = "DB_MYSQL_CREDITSCREDIT00_CREDPRODS_CREDPRODS_WPROD"
-	cd.Username = "credprods_WPROD"
-	cd.Schema = "credprods"
-	cd.Dialect = mysqlDialect
-	cd.DialectConnect = mySQLConnect
-	return cd
-}*/
 
 func mySQLConnect(dns string) gorm.Dialector {
 	return mysql.Open(dns)
